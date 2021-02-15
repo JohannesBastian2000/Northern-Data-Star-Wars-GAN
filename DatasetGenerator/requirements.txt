@@ -1,0 +1,5 @@
+numpy
+pytube
+shortuuid
+opencv-python
+pytest
