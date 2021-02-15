@@ -44,6 +44,19 @@ class FaceExtractor:
                 print("Extracted " + str(self.count) + " faces So far")
 
     def calculate_face_safe_area(self, box, buffet: int = 20) -> (int, int, int):
-        delta_x = int(((box[2] - box[0]) / 100) * buffet)
-        delta_y = int(((box[3] - box[1]) / 100) * buffet)
-        return (box[0] - delta_x, box[1] - delta_y, box[2] + delta_x, box[3] + delta_y)
+        startX, startY, endX, endY = box[0], box[1], box[2], box[3]
+        x_length = endX - startX
+        y_length = endY - startY
+        if x_length < y_length:
+            diff = (y_length - x_length) // 2
+            startX -= diff
+            endX += diff
+
+        elif delta_x > delta_y:
+            diff = (x_length - y_length) // 2
+            startY -= diff
+            endY += diff
+
+        delta_x = int(((endX - startX) / 100) * buffet)
+        delta_y = int(((endY - startY) / 100) * buffet)
+        return (startX - delta_x, startY - delta_y, endX + delta_x, endY + delta_y)

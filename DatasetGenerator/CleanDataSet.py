@@ -58,6 +58,7 @@ class CleanDataSet:
 
     def resize(self, path: str):
         average_height, average_width = self.get_average_dimensions(path)
+        size = min(average_height, average_width)
         print("Average height: %s, width: %s" % (average_height, average_width))
         count = 0
         for file in os.listdir(path):
@@ -70,10 +71,10 @@ class CleanDataSet:
                     continue
                 resized_image = cv2.resize(
                     image,
-                    (average_width, average_height),
+                    (size, size),
                     interpolation=cv2.INTER_LINEAR,
                 )
-                norm_img = np.zeros((average_width, average_height))
+                norm_img = np.zeros((size, size))
                 norm_img = cv2.normalize(
                     resized_image, norm_img, 0, 255, cv2.NORM_MINMAX
                 )
