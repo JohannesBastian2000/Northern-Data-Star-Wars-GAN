@@ -12,10 +12,16 @@ every_x_frame = 10
 
 
 class GenerateDataset:
-    def __init__(self, video_urls: [str] = VIDEOURLS, every_x_frame: int = 10):
+    def __init__(
+        self,
+        video_urls: [str] = VIDEOURLS,
+        every_x_frame: int = 10,
+        set_fix_image_size: int = None,
+    ):
         self.video_urls = video_urls
         self.every_x_frame = every_x_frame
         self.face_extractor = FaceExtractor()
+        self.set_fix_image_size = set_fix_image_size
 
     def run(self):
         print("Starting dataset generation.....")
@@ -42,5 +48,5 @@ class GenerateDataset:
         clean.clean(path)
         time.sleep(3)
         print("Normalising and resizing data set")
-        clean.resize(path)
+        clean.resize(path, fix_size=self.set_fix_image_size)
         print("Dataset generation complete!")

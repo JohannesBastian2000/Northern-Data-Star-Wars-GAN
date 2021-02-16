@@ -3,3 +3,4 @@ pytube
 shortuuid
 opencv-python
 pytest
+matplotlib

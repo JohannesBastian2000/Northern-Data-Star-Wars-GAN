@@ -35,7 +35,7 @@ class CleanDataSet:
                     confidence = detections[0, 0, i, 2]
                     max_confidence = max(max_confidence, confidence)
 
-                if max_confidence < 0.2 or xy_difference > 250:
+                if max_confidence < 0.2 or xy_difference > 15:
                     os.remove(image_path)
                     print(file_name)
                     print("XYDifference: ", abs(h - w))
@@ -56,10 +56,13 @@ class CleanDataSet:
                 average_width += w
         return (average_height // number_of_images, average_width // number_of_images)
 
-    def resize(self, path: str):
-        average_height, average_width = self.get_average_dimensions(path)
+    def resize(self, path: str, fix_size: int = None):
+        if fix_size is None:
+            average_height, average_width = self.get_average_dimensions(path)
+            print("Average height: %s, width: %s" % (average_height, average_width))
+        else:
+            average_height, average_width = fix_size, fix_size
         size = min(average_height, average_width)
-        print("Average height: %s, width: %s" % (average_height, average_width))
         count = 0
         for file in os.listdir(path):
             file_name, file_extension = os.path.splitext(file)
