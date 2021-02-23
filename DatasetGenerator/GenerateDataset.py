@@ -3,6 +3,7 @@ from pytube import YouTube
 # misc
 import os
 import time
+import typing
 from FrameExtractor import FrameExtractor
 from FaceExtractor import FaceExtractor
 from CleanDataSet import CleanDataSet
@@ -14,7 +15,7 @@ every_x_frame = 10
 class GenerateDataset:
     def __init__(
         self,
-        video_urls: [str] = VIDEOURLS,
+        video_urls: list[str] = VIDEOURLS,
         every_x_frame: int = 10,
         set_fix_image_size: int = None,
     ):
