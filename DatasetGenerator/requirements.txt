@@ -1,5 +1,5 @@
 numpy
-pytube
+pytubeX
 shortuuid
 opencv-python
 pytest

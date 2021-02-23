@@ -1,5 +1,4 @@
 VIDEOURLS = [
-    "https://www.youtube.com/watch?v=2GTw9HCDzQc",
     "https://www.youtube.com/watch?v=knSzn0FvSNE",
     "https://www.youtube.com/watch?v=QbeKgolVeUU",
     "https://www.youtube.com/watch?v=r28Tt7mj9lo",
