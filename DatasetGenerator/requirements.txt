@@ -4,3 +4,6 @@ shortuuid
 opencv-python
 pytest
 matplotlib
+typer
+ffmpeg
+moviepy
