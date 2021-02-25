@@ -8,3 +8,4 @@ typer
 ffmpeg
 moviepy
 tensorflow-rocm==1.15.9
+dlib
